@@ -23,3 +23,34 @@ dependencies {
 
 1. simple dagger2 + kotlin + viewModel
 ![image](https://user-images.githubusercontent.com/22374750/51797558-2a59dc80-2249-11e9-983c-ccedc83843bd.png)
+
+1-1. MainViewModel
+
+```
+class MainViewModel(){
+    fun greet(): String{
+        return "hello"
+    }
+}
+```
+
+1-2. ViewModelModule
+
+```
+@Module
+class ViewModelModule{
+    @Provides
+    fun provideMainViewModel() : MainViewModel{
+        return MainViewModel()
+    }
+}
+```
+
+1-3. MainActivityComponent
+
+```
+@Component(modules = [ViewModelModule::class])
+interface MainActivityComponent{
+    fun inject(activity: MainActivity)
+}
+```
