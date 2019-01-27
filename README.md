@@ -38,6 +38,7 @@ class MainViewModel(){
 ```
 
 1-2. ViewModelModule
+
 ViewModelModule은 MainViewModel을 만들어서 provide해주는 Module 객체입니다.
 ```
 @Module
@@ -50,6 +51,7 @@ class ViewModelModule{
 ```
 
 1-3. MainActivityComponent
+
 MainActivityComponent는 module을 component에 집어넣습니다.
 또한 inject 매소드는 Activity와 @Inject 객체를 이어주는 역할을 합니다.
 
@@ -61,6 +63,7 @@ interface MainActivityComponent{
 ```
 
 1-4. MainActivity
+
 MainActivity에서는 Component 인터페이스 앞에 Dagger라는 이름이 붙은 클래스가 자동으로 만들어지는데
 해당 클래스를 통해서 interface 안에 modules의 값들에 Module을 매칭시켜줘서
 component를 만들게 되고, 해당 component는 inject시켜서 @Inject라는 메타태그가 있는 변수에
