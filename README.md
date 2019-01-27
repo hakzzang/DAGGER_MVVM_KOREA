@@ -84,3 +84,64 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
+
+2. simple dagger + mvvm + repository + viewModel
+![image](https://user-images.githubusercontent.com/22374750/51800886-d3b8c680-2279-11e9-8e4c-0f0102816057.png)
+
+2-1. MainViewModel
+
+```
+class MainViewModel @Inject constructor(private val greetingRepository: GreetingRepositoryContract): MainViewModelContract{
+    override fun greet(): String{
+        return greetingRepository.greet()
+    }
+}
+```
+2-2. MainViewModelContract
+
+```
+interface MainViewModelContract{
+    fun greet():String
+}
+```
+2-3. GreetingRepository
+
+```
+class GreetingRepository : GreetingRepositoryContract{
+    override fun greet(): String {
+        return "hi!"
+    }
+}
+```
+
+2-4. GreetingRepositoryContract
+
+```
+interface GreetingRepositoryContract{
+    fun greet() : String
+}
+```
+
+2-5. ViewModelModule
+
+```
+@Module
+class ViewModelModule{
+    @Provides
+    fun provideMainViewModel(greetingRepository: GreetingRepositoryContract) : MainViewModel {
+        return MainViewModel(greetingRepository)
+    }
+}
+```
+
+2-6. RepositoryModule
+
+```
+@Module
+class RepositoryModule{
+    @Provides
+    fun provideGreetingRepository() : GreetingRepositoryContract{
+        return GreetingRepository()
+    }
+}
+```
