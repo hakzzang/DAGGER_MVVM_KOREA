@@ -1,5 +1,4 @@
-# koin view model
-
+# koin study2 - viewModel
 
 `koin`에서는 `AAC`의 `ViewModel`을 inject 하기 위해서 `factory` 외에도 `viewmodel`을 제공해줍니다.
 우선 aac에서 viewmodel을 사용하는 이유는 많은 문서에서 말하길, 액티비티가 회전되면서 context를 유지하거나
@@ -31,3 +30,22 @@ val greetViewModel:GreetingViewModel by viewModel()
 
 factory{객체()} -> val 선언 : 객체 by inject() 구조에서 viewModel{myModel()} val myModel : 객체 by viewModel()
 로 변경된 구조로 사용이 됩니다.
+
+# scope
+
+`scope`는 scope("start") { GreetingViewModel(get("greetRepos")) } 와 같이, 특정 시점에 해당
+inject가 일어날 수 있도록 할 수 있습니다.
+appModule에서 위와 같이 선언을 하게 된다면, activity 단에서는 getOrCreateScope("start")를 통해서
+inject하는 시점을 설정할 수 있습니다.
+```
+class GreetingActivity : AppCompatActivity() {
+    val greetViewModel:GreetingViewModel by viewModel()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_greeting)
+        bindScope(getOrCreateScope("start")) //greetViewModel 호출하기 전에 bindScope(getOrCreateScope(name))으로 inject
+        tv_test.text = greetViewModel.sayHello() +"data"
+        //bindScope(getOrCreateScope("start")) 여기에 한다면, greetViewModel이 inject가 안되어서 오류가 남.
+    }
+}
+```
