@@ -49,3 +49,6 @@ class GreetingActivity : AppCompatActivity() {
     }
 }
 ```
+이 때, `bindScope(getOrCreateScope(name))`과 `getOrCreateScope(name)`으로 선언할 수 있는데
+두 가지의 차이점은 bindScope를 통해서 감싸게 된다면, 해당 getOrCreateScope를 통해서 inject 한 값이
+lifecycle에 종속되는데 getOrCreateScope로만 하게 된다면, lifeCycle에 의존되지 않습니다.
