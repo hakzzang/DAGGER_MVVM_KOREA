@@ -61,11 +61,16 @@ Changes in DSL
 The following functions & keywords have been renamed:
 
 applicationContext -> module (declaring a module)
+
 context -> module (declaring a submodule)
+
 bean -> single (unique instance definition)
+
 controller need your class to be tagged as SparkController
+
 Some core functions that have been renamed:
 
 releaseContext -> release
+
 closeKoin -> stopKoin
 
