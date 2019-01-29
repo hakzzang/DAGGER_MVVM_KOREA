@@ -9,7 +9,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GreetingActivity : AppCompatActivity() {
-    val greetViewModel:GreetingViewModel by inject()
+    val greetViewModel:GreetingViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_greeting)
