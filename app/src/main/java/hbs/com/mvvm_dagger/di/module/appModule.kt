@@ -8,5 +8,5 @@ import org.koin.dsl.module.module
 
 val appModule = module {
     single("greetRepos") { GreetingRepository() }
-    viewModel { GreetingViewModel(get("greetRepos")) }
+    scope("start") { GreetingViewModel(get("greetRepos")) }
 }
