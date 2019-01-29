@@ -55,4 +55,17 @@ lifecycle에 종속되는데 getOrCreateScope로만 하게 된다면, lifeCycle�
 
 ![image](https://user-images.githubusercontent.com/22374750/51922717-f17a5d00-242c-11e9-8af9-70f0e7ae03d3.png)
 
+# 추가사항
+
+Changes in DSL
+The following functions & keywords have been renamed:
+
+applicationContext -> module (declaring a module)
+context -> module (declaring a submodule)
+bean -> single (unique instance definition)
+controller need your class to be tagged as SparkController
+Some core functions that have been renamed:
+
+releaseContext -> release
+closeKoin -> stopKoin
 
