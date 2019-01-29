@@ -22,6 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -30,16 +33,23 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
 
-    def daggerVer = "2.21"
-    implementation 'com.google.dagger:dagger:2.21'
-    implementation "com.google.dagger:dagger-android:$daggerVer"
-    implementation "com.google.dagger:dagger-android-support:$daggerVer" // if you use the support libraries
-    kapt  "com.google.dagger:dagger-android-support:2.21"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVer"
-    kapt "com.google.dagger:dagger-compiler:$daggerVer"
+    def dagger_ver = "2.21"
+    def koin_version = "1.0.2"
+    implementation "com.google.dagger:dagger:$dagger_ver"
+    implementation "com.google.dagger:dagger-android:$dagger_ver"
+    implementation "com.google.dagger:dagger-android-support:$dagger_ver" // if you use the support libraries
+    kapt "com.google.dagger:dagger-android-support:$dagger_ver"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_ver"
+    kapt "com.google.dagger:dagger-compiler:$dagger_ver"
+
+    // AndroidX (based on koin-android)
+    // Koin AndroidX Scope feature
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    // Koin AndroidX ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVer"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_ver"
 }

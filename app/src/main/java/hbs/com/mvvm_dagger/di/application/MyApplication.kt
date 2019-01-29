@@ -2,11 +2,10 @@ package hbs.com.mvvm_dagger.di.application
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
-import hbs.com.mvvm_dagger.di.component.AppComponent
-import hbs.com.mvvm_dagger.di.component.DaggerAppComponent
 import hbs.com.mvvm_dagger.di.module.RepositoryModule
 import hbs.com.mvvm_dagger.di.module.ViewModelModule
 
+/*
 class MyApplication : Application(){
     companion object {
         lateinit var component : AppComponent private set
@@ -19,4 +18,4 @@ class MyApplication : Application(){
             .repositoryModule(RepositoryModule())
             .build()
     }
-}
+}*/
